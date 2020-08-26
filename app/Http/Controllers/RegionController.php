@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Region;
+
 
 class RegionController extends Controller
 {
@@ -13,7 +15,8 @@ class RegionController extends Controller
      */
     public function index()
     {
-        //
+        $regions=Region::all();
+        return view('backend.region.regionlist',compact('regions'));
     }
 
     /**
@@ -23,7 +26,7 @@ class RegionController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.region.addregion');
     }
 
     /**
@@ -34,7 +37,22 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            
+            'region_name'=>'required'
+            
+        ]);
+        //If include file, upload 
+        //File upload
+
+        //Data insert 
+        $region = new Region;
+        $region->region_name =$request->region_name;
+        $region->save();
+
+
+        //Redirect
+        return redirect()->route('regions.index');
     }
 
     /**
@@ -56,7 +74,8 @@ class RegionController extends Controller
      */
     public function edit($id)
     {
-        //
+       $region=Region::find($id);
+        return view('backend.region.regionview',compact('region'));
     }
 
     /**
@@ -68,7 +87,22 @@ class RegionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+
+            'region_name'=>'required'
+            
+        ]);
+
+        //if include file, upload
+        //data update
+        $region = Region::find($id);
+        
+        $region->region_name =$request->region_name;
+        
+        $region->save();
+        
+        //redirect
+        return redirect()->route('regions.index');
     }
 
     /**
@@ -79,6 +113,10 @@ class RegionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $region=Region::find($id);
+        $region->delete();
+        //redirect
+        return redirect()->route('regions.index');
     }
+
 }

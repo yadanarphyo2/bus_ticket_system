@@ -15,23 +15,32 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
 
-Route::Resource('/operators','OperatorController');
-Route::Resource('/buses','BusController');
-Route::Resource('/schedules','ScheduleController');
-Route::Resource('/regions','RegionController');
-Route::Resource('/subregions','SubregionController');
-Route::Resource('/bookings','BookingController');
 
 Route::middleware('role:admin')->group(function(){
-
 Route::get('/dashboard', 'BackendController@dashboard')->name('dashboard');
 
 });
-Route::get('/', 'FrontendController@frontend')->name('frontend');
+Route::Resource('/operators','OperatorController');
+Route::Resource('/buses','BusController');
+Route::Resource('/regions','RegionController');
+Route::Resource('/subregions','SubregionController');
+Route::Resource('/schedules','ScheduleController');
 
+
+Route::get('/', 'FrontendController@frontend')->name('frontend');
+Route::post('/index', 'FrontendController@index')->name('index');
+Route::post('/selectseat/{id}', 'FrontendController@selectseat')->name('selectseat');
+Route::post('/customer/{id}', 'FrontendController@customer')->name('customer');
+// Route::Resource('/customers','CustomerController');
+Route::Resource('/bookings','BookingController');
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+// Route::post('/getItem','FrontendController@getItem')->name('getItem');
+Route::post('getsubregion','SubregionController@getsubregion')->name('busroute');
+Route::post('getdata','ScheduleController@getdata')->name('getdata');
+Route::post('getoperator','ScheduleController@getoperator')->name('getoperator');
+Route::post('/customerstore','FrontendController@customerstore')->name('customerstore');
 
 

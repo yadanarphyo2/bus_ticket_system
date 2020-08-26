@@ -9,11 +9,29 @@
   <link rel="icon" type="text/css" href="{{asset('frontend/img/logo.png')}}" >
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link href="{{asset('frontend/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  
   <link rel="stylesheet" type="text/css" href="{{asset('frontend/fontawesome/css/all.min.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style.css')}}">
+
+  <link href="{{asset('frontend/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"> 
+  
+  <script src="{{asset('frontend/bootstrap/js/jquery.min.js')}}"></script>
+  <script src="{{asset('frontend/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+
+  <link rel="stylesheet" type="text/css" href="{{asset('frontend/slick-master/slick/slick.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('frontend/slick-master/slick/slick-theme.css')}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+
+
    <div class="bg_im">
    <!-- navbar -->
   <nav class="navbar navbar-expand-md busticketnav">
@@ -31,144 +49,220 @@
       </div>
     </div>
   </nav>
-  <div class="container opbus mt-5 pt-5">
-    <div class="card bg-dark">
-    <div class="card-body">
-      <div class="form">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="form-group busticket">
-                  <label for="laeving" class="text-muted"><small>Leaving From</small></label>
-                  <select id="leaving" class="form-control " onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
-                    <option value="">Select a state...</option>
-                    <option value="1">Yangon</option>
-                    <option value="2">Mandalay</option>
-                    <option value="3">Bagan</option>
-                  </select>
+  
 
-                  
+  <div class="container pt-5 mt-5">
+  <div class="card opbus">
+    <div class="card-header">
+      Search From
+    </div>
+    <form method="POST" action="{{route('index')}}">
+      @csrf
+    <div class="card-body my-3">
+      <div class="row">
+
+        <div class="col-md-3 form-group">
+          <label for="laeving" class=" text-dark"><small>From City</small></label>
+          <select name="region" class="form-control" id="region">
+            <option value="">From City:</option>
+              @foreach($regions as $bs)
+                <option value="{{$bs->id}}">{{$bs->region_name}}</option>
+              @endforeach
+          </select>
+        </div>
+
+        <div class="col-md-3 form-group">
+          <label for="laeving" class="text-dark"><small>To City</small></label>
+          <select name="subregion" class="form-control" id="subregion">
+            <option value="">To City:</option>
+            {{-- @foreach($subregions as $bss)
+            <option value="{{$bss->subregion_id}}">{{$bss->subregion_name}}</option>
+            @endforeach --}}
+          </select>
+        </div>
+
+      
+        <div class="col-md-2 form-group">
+          <label for="laeving" class="text-dark"><small>Depature Date</small></label>
+          <input type="text" class="form-control" id="from" name="from" value="{{date('Y-m-d')}}">
+        </div>
+
+        <div class="col-md-2 form-group">
+          <label for="laeving" class="text-dark"><small>Number of Seats</small></label>
+          <select name="passenger" id="leaving" class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+
+          <div class="col-md-2 mt-4 pt-2">
+            <button type="submit" class="btn btn-primary">SEARCH</button>
+          </div>
+
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+  </div>
+
+
+  <!-- popular route -->
+    
+      <div class="container text-center">
+      
+        
+          <h4 class="">Popular Routes</h4>
+          <hr class="divider">
+          <div class="container">
+          <div class="row">
+          <div class="col-md-12">
+          <div class="slick-slider slider py-5" >
+            <div class="text-center photohover">
+              <div class="card mr-3">
+                <div class="card-img">
+                  <img src="{{asset('frontend/img/yangon.jpg')}}" width="250px" height="100px" class="img-fluid card-img-top">
                 </div>
-              </div>
-              
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="laeving" class="text-muted"><small> Going To</small></label>
-                  <select id="leaving" class="form-control " onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
-                    <option value="1">Yangon</option>
-                    <option value="2">Mandalay</option>
-                    <option value="3">Bagan</option>
-                    
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label for="expdate" class="date text-muted"><small>Depature Date</small></label>
-                  <input type="date" class="form-control" id="expdate" placeholder="Select Date">
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label for="laeving" class="text-muted"><small>Number of Seat</small></label>
-                  <select id="leaving" class="form-control " onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-2 my-4">
-                <div class="form-group">
-                  <button class="btn btn-outline-danger">Search</button>
+                <div class="card-body">
+                  <p><i class="fas fa-location-arrow px-2 arr text-info"></i>Yangon-Mandalay</p>
                 </div>
               </div>
             </div>
+
+            <div class="text-center photohover">
+              <div class="card mr-3" >
+                <div class="card-img">
+                  <img src="{{asset('frontend/img/mandalay.jpeg')}}" width="250px" height="100px" class="img-fluid card-img-top">
+                </div>
+                <div class="card-body">
+                  <p><i class="fas fa-location-arrow px-2 text-info"></i>Mandalay-Bagan</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="text-center photohover">
+              <div class="card mr-3">
+                <div class="card-img">
+                  <img src="{{asset('frontend/img/bagan.jpeg')}}" width="250px" height="100px" class="img-fluid card-img-top">
+                </div>
+                <div class="card-body">
+                  <p><i class="fas fa-location-arrow px-2 text-info"></i>Bagan-Yangon</p>
+                </div>
+              </div>
+            </div>        
+
+            <div class="text-center photohover">
+              <div class="card mr-3">
+                <div class="card-img">
+                  <img src="{{asset('frontend/img/inlay.jpeg')}}" width="250px" height="100px" class="img-fluid card-img-top">
+                </div>
+                <div class="card-body">
+                  <p><i class="fas fa-location-arrow px-2 text-info"></i>Inlay-Mandalay</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center photohover">
+              <div class="card mr-3">
+                <div class="card-img">
+                  <img src="{{asset('frontend/img/naypyidaw.jpeg')}}" width="250px" height="100px" class="img-fluid card-img-top">
+                </div>
+                <div class="card-body">
+                  <p><i class="fas fa-location-arrow px-2 text-info"></i>Naypwidaw-Yangon</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
           </div>
         </div>
       </div>
+    
+    <!-- comment -->
+    <div class="container container-fluid my-5">
+      <h4 class="text-center">Why Book with Golden Bus Ticket</h4>
+          <hr class="divider pb-5">
+
+      <div class="row pb-5">
+          <div class="col-lg-3 col-md-4 col-sm-6 p-0">
+            <div class="card h-100">
+              <div class="card-img mt-3 my-3">
+                <i class="fas fa-plus-square fa-3x text-info"></i>
+              </div>
+            <div class="card-body">
+
+            <p class="text-info">SAFETY +</p>
+            
+            <p>" With Safety+ we have brought in a set of measures like Sanitized buses, mandatory masks etc. to ensure you travel safely." </p>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 p-0">
+          <div class="card h-100"> 
+            <div class="card-img mt-3 my-3">
+              <i class="fas fa-user-cog fa-3x text-info"></i>
+            </div>
+            <div class="card-body">
+
+            <p class="text-info">CUSTOMER SERVICE</p>
+            <p>" We put our experience and relationships to good use and are available to solve your travel issues."</p>
+
+            
+          </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 p-0">
+          <div class="card h-100"> 
+            <div class="card-img mt-3 my-3">
+              <i class="fas fa-tags fa-3x text-info"></i>
+            </div>
+            <div class="card-body">
+
+            <p class="text-info">LOWEST PRICES</p>
+            <p>"We always give you the lowest price with the best partner offers." </p>
+
+            
+          </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 p-0">
+          <div class="card h-100"> 
+            <div class="card-img mt-3 my-3">
+              <i class="fas fa-gifts fa-3x text-info"></i>
+            </div>
+            <div class="card-body">
+
+
+            <p class="text-info">UNMATCHED BENEFITS</p>
+            <p>" We take care of your travel beyond ticketing by providing you with innovative and unique benefits."</p>
+
+            
+          </div>
+        </div>
+        </div>
+      </div>
+      
     </div>
+
   </div>
+
+
+
+  {{-- operator --}}
   <div class="container">
     <h2 class="text-center my-5">BUS OPERATOR</h2>
     <div class="row">
+      @foreach($operators as $operator)
       <div class="col-md-2">
-        <img src="{{asset('frontend/img/ATW.png')}}" width="150px;">
+        <img src="{{asset($operator->operator_logo)}}" width="150px;">
       </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Ayein_Na_Mar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Bagan_Min_Thar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Chin_Taung_Tan.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/GI_Group.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/High_Class.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Khaing_Mandalay.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Kyan_Tai_Aung.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Kyaw_Hlwar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Lumbani.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Ma_Naw_Ta_Kun.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Man_Yar_Zar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Mandalar_Min.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Moe_Htet_Arkar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Mya_Yadanar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Moe_Htet_Arkar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Moe_Htet_Arkar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Moe_Htet_Arkar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Moe_Htet_Arkar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Moe_Htet_Arkar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Moe_Htet_Arkar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Moe_Htet_Arkar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Moe_Htet_Arkar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Moe_Htet_Arkar.png')}}" width="150px;">
-      </div>
-      <div class="col-md-2">
-        <img src="{{asset('frontend/img/Moe_Htet_Arkar.png')}}" width="150px;">
-      </div>
+     @endforeach
     </div>
   </div>
     <!-- footer -->
@@ -234,9 +328,66 @@
   </footer>
 
 
-  <script src="{{asset('frontend/bootstrap/js/jquery.min.js')}}"></script>
-  <script src="{{asset('frontend/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   
+  <script src="{{asset('frontend/js/form.js')}}"></script>
+  <script type="text/javascript" src="{{asset('frontend/slick-master/slick/slick.js')}}"></script>
+
+   
+   
+
+ 
+ <script type="text/javascript">
+   $(document).ready(function () {   
+
+      var dateToday = new Date();
+      var dates = $("#from").datepicker({
+        dateFormat: 'yy-mm-d',
+        defaultDate: "+1",
+        changeMonth: true,
+        numberOfMonths: 1,
+        minDate: dateToday,
+        onSelect: function(selectedDate) {
+          var option = this.id == "from" ? "minDate" : "maxDate",
+          instance = $(this).data("datepicker"),
+          date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+          dates.not(this).datepicker("option", option, date);
+        }
+      }); 
+      $('.slick-slider').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+         responsive: [
+         {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+         },
+         {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+         },
+         {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+         }
+         ]
+        });
+    
+  })
+
+</script>
 </body>
 
 </html>

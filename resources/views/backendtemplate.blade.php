@@ -119,20 +119,35 @@
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link" href="{{route('operators.index')}}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-user-plus"></i>
           <span>Operators</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('buses.index')}}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-bus"></i>
           <span>Bus</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('regions.index')}}">
+          <i class="fas fa-location-arrow"></i>
+          <span>Region</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('subregions.index')}}">
+          <i class="fas fa-map-marked-alt"></i>
+          <span>Subregion</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('bookings.index')}}">
+          <i class="fas fa-laptop"></i>
+          <span>Booking</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+        <a class="nav-link" href="{{route('schedules.index')}}">
+          <i class="far fa-calendar-alt"></i>
+          <span>Schedules</span></a>
       </li>
 
       <!-- Divider -->
@@ -310,23 +325,14 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                          </form>
               </div>
             </li>
 
@@ -376,7 +382,14 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                          </form>
         </div>
       </div>
     </div>

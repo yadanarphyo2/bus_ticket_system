@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<span class="pull-center">
-					<a href="{{route('buses.create')}}" data-target="#exampleModalCenteraddBus" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">
+					<a href="{{route('buses.create')}}" type="button" class="btn btn-sm btn-primary">
 						<i class="glyphicon glyphicon-log-in">Add New Bus</i>
 					</a>
 				</span>
@@ -14,36 +14,33 @@
 						<div class="m-3" >
 						<h3 class="card-title">Buses List</h3>
 						<h4 class="card-title float-right">Today is :{{date('d-m-Y',time())}}</h4>
-							<p class="card-category">Here is a subtitle for this table</p>
+							<p class="card-category">You can see bus list here</p>
 						</div>
 
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							@if (count($operators) > 0) 
-							{{-- here we check if the operator is empty we show this only alse we show all the operator records --}}
+							
+							
 							<table class="table">
 								<thead class="text-primary">
 									<th>No</th>
-									<th>Bus name</th>
-									<th>Bus code</th>
 									<th>Operator id</th>
 									<th>Total Seats</th>
-									<th>Created Date</th>
+									<th>Type of bus</th>
 									<th>Actions</th>
 								</thead>
 								<tbody>
-									@foreach($operators as $data)
+									@foreach($buses as $bus)
 									<tr>
 									<td>1</td>
-									<td><a data-toggle="modal" data-target="#exampleModalCenterViewOperator{{ $data->id}}" data-toggle="tooltip">{{$data->bus_name}}</a></td>
-									<td>{{ $data->bus_code }}</td>
-									<td>{{ $data->operator->id }}</td>
-									<td>{{ $data->created_at }}
+									<td>{{ $bus->operator->operator_name }}</td>
+									<td>{{$bus->total_seats}}
+									<td>{{$bus->description}}
 									</td>
 									<td>
-									<a href="{{route('operators.edit',$data->id)}}" class="btn btn-warning">edit</a>	
-									<form method="post" action="{{route('operators.destroy',$data->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block">
+									<a href="{{route('buses.edit',$bus->id)}}" class="btn btn-warning">edit</a>	
+									<form method="post" action="{{route('buses.destroy',$bus->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block">
 										@csrf
 										@method('DELETE')
 										<input type="submit" name="submit" value="Delete" class="btn btn-sm btn-danger">
@@ -53,7 +50,7 @@
 									@endforeach
 								</tbody>
 							</table>
-							@endif
+							
 						</div>
 					</div>
 				</div>

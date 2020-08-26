@@ -20,7 +20,6 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							@if (count($operators) > 0) 
 							
 							<table class="table">
 								<thead class="text-primary">
@@ -52,7 +51,6 @@
 									@endforeach
 								</tbody>
 							</table>
-							@endif
 						</div>
 					</div>
 				</div>

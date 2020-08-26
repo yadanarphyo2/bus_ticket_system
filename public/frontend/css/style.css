@@ -1,7 +1,6 @@
-
-nav.busticketnav{
-	/*box-shadow: 0 10px 20px rgba(0,0,0,0.3);*/
-	/*font-family: "offline1";*/
+nav.busindex{
+	box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+	font-family: "offline1";
 
 }
 
@@ -12,8 +11,24 @@ nav.busticketnav .navbar-nav .nav-item .nav-link{
 	color: white;
 }
 
+nav.busindex .navbar-nav .nav-item .nav-link #nav{
+	font-size: 1.3rem;
+	padding: 0 1.1rem;
+	text-transform: uppercase;
+	color: #27476e;
+}
+
+#myroute .card:hover{
+	background-color: #f5f6f7;
+	border-color: black;
+	/*border-bottom-width: 10px;*/
+}
 nav.busticketnav .navbar-nav .nav-item .nav-link:hover{
 	color: #27476e;
+}
+
+nav.busindex .navbar-nav .nav-item .nav-link:hover{
+	color: black;
 }
 
 @font-face{
@@ -53,6 +68,57 @@ div.bg_im::before{
 
 .opbus{
 	opacity: 0.8;
+}
+
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+/*.hr1
+ { display: inline-block; 
+ 	width: 90%; }
+*/
+.card.card1{
+	border-radius: 20px;
+}
+
+button.pressed {
+        background-color:  #1b80bf;
+    }
+
+.available{
+	background-color: lightgray;
+}
+.selectbtn{
+	background-color: #1b80bf;
+}
+.book{
+	background-color: red;
+}
+
+.clickMe{
+	border-bottom-width: 5px; 
+	width: 60px;
+	height: 50px;
+}
+
+.photohover div:hover{
+	color: #147ab5;
+	transform: translate(3px,-7px);
+	transition-duration: .3s;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+hr.divider{
+	max-width: 7.25rem;
+	border-width: 0.2rem;
+	border-color: lightblue;
 }
 
 

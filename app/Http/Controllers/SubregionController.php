@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Region;
+use App\Subregion;
+use DB;
 class SubregionController extends Controller
 {
     /**
@@ -13,7 +15,10 @@ class SubregionController extends Controller
      */
     public function index()
     {
-        //
+        $subregions=Subregion::all();
+        // dd($subregions);
+        
+        return view('backend.subregion.subregionlist',compact('subregions'));
     }
 
     /**
@@ -23,7 +28,8 @@ class SubregionController extends Controller
      */
     public function create()
     {
-        //
+        $regions=Region::all();
+        return view('backend.subregion.addsubregion',compact('regions'));
     }
 
     /**
@@ -34,7 +40,24 @@ class SubregionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // dd($request);
+        $request->validate([
+            'subregion_name'=>'required',
+        ]);
+        //If include file, upload 
+        //File upload
+        
+        //Data insert 
+        $subregion = new Subregion;
+        
+        $subregion->subregion_name =$request->subregion_name;
+        $subregion->region_id =$request->region_id;
+        $subregion->save();
+
+
+        //Redirect
+        return redirect()->route('subregions.index');
     }
 
     /**
@@ -45,7 +68,7 @@ class SubregionController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +79,9 @@ class SubregionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $regions=Region::all();
+        $subregion=Subregion::find($id);
+        return view('backend.subregion.subregionview',compact('regions','subregion'));
     }
 
     /**
@@ -68,7 +93,19 @@ class SubregionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'subregion_name'=>'required',
+        ]);
+       
+       
+        //data update
+        $subregion = Subregion::find($id);
+        $subregion->subregion_name =$request->subregion_name;
+        $subregion->region_id =$request->region_id;
+        $subregion->save();
+        
+        //redirect
+        return redirect()->route('subregions.index');
     }
 
     /**
@@ -79,6 +116,16 @@ class SubregionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $subregion=Subregion::find($id);
+        $subregion->delete();
+        //redirect
+        return redirect()->route('subregions.index');
+    }
+
+    public function getsubregion(Request $request)
+    {
+        $sid = request('id');
+        $subregions = Subregion::where('region_id',$sid)->get();
+        return $subregions;
     }
 }

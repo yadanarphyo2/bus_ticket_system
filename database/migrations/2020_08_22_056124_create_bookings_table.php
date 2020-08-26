@@ -18,8 +18,8 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('schedule_id');
             $table->integer('seat_amout');
-            $table->integer('seat_no');
-            $table->integer('dapature_date');
+            $table->string('seat_no');
+            $table->date('dapature_date');
             $table->timestamps();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->foreign('schedule_id')->references('id')->on('busschedules')->onDelete('cascade');

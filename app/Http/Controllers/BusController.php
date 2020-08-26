@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Bus;
+use App\Operator;
+
 
 class BusController extends Controller
 {
@@ -13,7 +16,8 @@ class BusController extends Controller
      */
     public function index()
     {
-        return view('backend.bus.buslist');
+        $buses= Bus::all();
+        return view('backend.bus.buslist',compact('buses'));
     }
 
     /**
@@ -23,7 +27,8 @@ class BusController extends Controller
      */
     public function create()
     {
-        //
+        $operators=Operator::all();
+       return view('backend.bus.addbus',compact('operators'));
     }
 
     /**
@@ -34,7 +39,27 @@ class BusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // dd($request);
+       $request->validate([
+        'operator_id'=>'required',
+        'total_seats'=>'required',
+        'description'=>'required',
+
+        
+       ]);
+
+       // insert data
+       // $item->column name=$request->form name
+
+       $bus=new Bus;
+       $bus->operator_id=$request->operator_id;
+       $bus->total_seats=$request->total_seats;
+       $bus->description=$request->description;
+
+   
+       $bus->save();
+
+       return redirect()->route('buses.index');
     }
 
     /**
@@ -45,7 +70,7 @@ class BusController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +81,9 @@ class BusController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bus=Bus::find($id);
+        $operators=Operator::all();
+        return view('backend.bus.busview',compact('bus','operators'));
     }
 
     /**
@@ -68,7 +95,30 @@ class BusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $request->validate([
+        
+        'operator_id'=>'required',
+        
+        'total_seats'=>'required',
+        'description'=>'required',
+
+       
+       ]);
+
+        //if include file,upload
+
+       
+
+        //data update
+       $bus=Bus::find($id);
+       $bus->operator_id=$request->operator_id;
+       $bus->total_seats=$request->total_seats;
+       $bus->description=$request->description;
+       
+       $bus->save();
+        //redirect
+       return redirect()->route('buses.index');
     }
 
     /**
@@ -79,6 +129,9 @@ class BusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bus=Bus::find($id);
+        $bus->delete();
+        //redirect
+        return redirect()->route('buses.index');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubRegionsTable extends Migration
+class CreateSubregionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -29,6 +29,6 @@ class CreateSubRegionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub__regions');
+        Schema::dropIfExists('subregions');
     }
 }
