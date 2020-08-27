@@ -36,7 +36,7 @@
    <!-- navbar -->
   <nav class="navbar navbar-expand-md busticketnav">
     <div class="container">
-      <a href="index.html" class="navbar-brand"><img src="{{asset('frontend/img/logo.png')}}" width="100px;" class="d-block"> <b style="color: #27476e;">GOLDEN Bus Ticket</b></a>
+      <a href="index.html" class="navbar-brand"><img src="{{asset('frontend/img/logo.png')}}" width="100px;" class="d-block ml-4"><h4 style="color: #27476e;">Golden Bus Ticket</h4></a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#busticket">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -100,7 +100,7 @@
         </div>
 
           <div class="col-md-2 mt-4 pt-2">
-            <button type="submit" class="btn btn-primary">SEARCH</button>
+            <button type="submit" class="btn btn-primary" style="font-family: offline2;">SEARCH</button>
           </div>
 
         </div>
@@ -116,7 +116,7 @@
       <div class="container text-center">
       
         
-          <h4 class="">Popular Routes</h4>
+          <h3 class="mt-5" style="font-family: offline2;">Popular Routes</h3>
           <hr class="divider">
           <div class="container">
           <div class="row">
@@ -185,7 +185,7 @@
     
     <!-- comment -->
     <div class="container container-fluid my-5">
-      <h4 class="text-center">Why Book with Golden Bus Ticket</h4>
+      <h3 class="text-center" style="font-family: offline2;">Why Book with Golden Bus Ticket</h3>
           <hr class="divider pb-5">
 
       <div class="row pb-5">
@@ -194,7 +194,7 @@
               <div class="card-img mt-3 my-3">
                 <i class="fas fa-plus-square fa-3x text-info"></i>
               </div>
-            <div class="card-body">
+            <div class="card-body" style="font-family: offline2;">
 
             <p class="text-info">SAFETY +</p>
             
@@ -208,7 +208,7 @@
             <div class="card-img mt-3 my-3">
               <i class="fas fa-user-cog fa-3x text-info"></i>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="font-family: offline2;">
 
             <p class="text-info">CUSTOMER SERVICE</p>
             <p>" We put our experience and relationships to good use and are available to solve your travel issues."</p>
@@ -222,7 +222,7 @@
             <div class="card-img mt-3 my-3">
               <i class="fas fa-tags fa-3x text-info"></i>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="font-family: offline2;">
 
             <p class="text-info">LOWEST PRICES</p>
             <p>"We always give you the lowest price with the best partner offers." </p>
@@ -236,7 +236,7 @@
             <div class="card-img mt-3 my-3">
               <i class="fas fa-gifts fa-3x text-info"></i>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="font-family: offline2;">
 
 
             <p class="text-info">UNMATCHED BENEFITS</p>
@@ -256,7 +256,8 @@
 
   {{-- operator --}}
   <div class="container">
-    <h2 class="text-center my-5">BUS OPERATOR</h2>
+    <h3 class="text-center mt-5" style="font-family: offline2;">BUS OPERATOR</h3>
+    <hr class="divider pb-5">
     <div class="row">
       @foreach($operators as $operator)
       <div class="col-md-2">
@@ -272,7 +273,7 @@
 
           <div class="col-lg-4 col-md-6 col-sm-6">
             
-            <h4>ABOUT</h4>
+            <h4 style="font-family: offline;">ABOUT</h4>
 
 
             <p class="pt-3 pr-5">GOLDEN bus ticket is reservation system by selling ticket from online.Choose from 50+ major bus operators covering 200 destinations.
@@ -280,7 +281,7 @@
             
           </div>
           <div class="col-lg-4 col-md-6 col-sm-6">
-            <h4>INFORMATION</h4>
+            <h4 style="font-family: offline;">INFORMATION</h4>
             <p class="pt-3">
               <i class="fas fa-greater-than"></i>
               Find/Print Your Ticket
@@ -305,7 +306,7 @@
           
           
           <div class="col-lg-4 col-md-6 col-sm-6">
-            <h4 class="pb-2">CONTACT US</h4>
+            <h4 class="pb-2" style="font-family: offline;">CONTACT US</h4>
               <p class="pt-3"><i class="fas fa-phone-alt text-light"></i> 09403253735</p>
               <p><i class="fas fa-home"></i> Room No.1004 A, Tower(A), River View Point Condo, Thit Taw St, Ahlone Tsp, Yangon</p>
             <a class="pr-2" href="https://www.instagram.com/phyoyadanar66"><i class="fab fa-instagram fa-2x text-light"></i></a>

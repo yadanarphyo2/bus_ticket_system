@@ -35,9 +35,7 @@ class ScheduleController extends Controller
          $regions=Region::all();
          $subregions=Subregion::all();
          $operators=Operator::all();
-
-
-            return view('backend.busschedule.addschedule',compact('buses','regions','subregions','operators'));
+          return view('backend.busschedule.addschedule',compact('buses','regions','subregions','operators'));
     }
 
     /**
@@ -58,6 +56,8 @@ class ScheduleController extends Controller
         'start_time'=>'required',
         'arrive_time'=>'required',
         'price'=>'required',
+        'description'=>'required',
+
         
        ]);
 
@@ -73,6 +73,8 @@ class ScheduleController extends Controller
        $busschedule->start_time=$request->start_time;
        $busschedule->arrive_time=$request->arrive_time;
        $busschedule->price=$request->price;
+       $busschedule->description=$request->description;
+
        $busschedule->save();
 
        return redirect()->route('schedules.index');
@@ -125,6 +127,8 @@ class ScheduleController extends Controller
         'start_time'=>'required',
         'arrive_time'=>'required',
         'price'=>'required',
+        'description'=>'required',
+        
         
        ]);
         //data update
@@ -137,6 +141,8 @@ class ScheduleController extends Controller
        $busschedule->start_time=$request->start_time;
        $busschedule->arrive_time=$request->arrive_time;
        $busschedule->price=$request->price;
+       $busschedule->description=$request->description;
+
        $busschedule->save();
         //redirect
        return redirect()->route('schedules.index');
@@ -188,15 +194,16 @@ class ScheduleController extends Controller
           $busschedule1= Busschedule::where('operator_id', $schoperator1)->get();
                foreach ($busschedule1 as $data1) 
               {
-                $data['regionname1']=$data1->region->region_name;
-                $data['subregionname1']=$data1->subregion->subregion_name;
-                $data['opname1']=$data1->operator->operator_name;
-                $data['oplogo1']=$data1->operator->operator_logo;
+                $data1['regionname1']=$data1->region->region_name;
+                $data1['subregionname1']=$data1->subregion->subregion_name;
+                $data1['opname1']=$data1->operator->operator_name;
+                $data1['oplogo1']=$data1->operator->operator_logo;
               }
         }
         else
         {
-            $busschedule1=Busschedule::where([['operator_id', $schoperator1],['region_id', $schregion1],['subregion_id', $schsubregion1]])->get();
+            $busschedule1=Busschedule::where('
+              ', $schoperator1)->where('region_id','=', $schregion1)->where('subregion_id','=', $schsubregion1)->get();
 
             // dd($busschedule1);
                 foreach ($busschedule1 as $data1) 

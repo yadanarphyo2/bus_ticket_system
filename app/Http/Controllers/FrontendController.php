@@ -8,7 +8,7 @@ use App\Subregion;
 use App\Region;
 use App\Busschedule;
 use App\Customer;
-
+use App\Booking;
 
 class FrontendController extends Controller
 {
@@ -18,6 +18,11 @@ class FrontendController extends Controller
       $subregions= Subregion::all();
    		$operators= Operator::all();
    	 	return view('frontendtemplate',compact('operators','regions','subregions'));
+   }
+
+   public function contact()
+   {
+      return view('frontend.contact');
    }
    //  public function dd($value='')
    // {
@@ -46,8 +51,11 @@ class FrontendController extends Controller
       // dd($request);
       $dep=$request->depaturedate;
       $passenger=$request->passenger;
+      $books= Booking::where('dapature_date','=', $dep)->where('schedule_id','=', $id)->get();
+      // dd($books);
+
       $busschedule=Busschedule::find($id);
-      return view('frontend.selectseat',compact('dep','passenger','busschedule'));
+      return view('frontend.selectseat',compact('dep','passenger','busschedule','books'));
    }
    public function customer(Request $request,$id)
    {
@@ -55,6 +63,7 @@ class FrontendController extends Controller
       $seat=$request->seat;
       $dep1=$request->depaturedate;
       $passenger1=$request->passenger;
+      
       $busschedule=Busschedule::find($id);
       return view('frontend.customer',compact('seat','dep1','passenger1','busschedule'));
    }

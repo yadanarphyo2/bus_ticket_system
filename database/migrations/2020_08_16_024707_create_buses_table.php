@@ -17,8 +17,6 @@ class CreateBusesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('operator_id');
             $table->integer('total_seats');
-            $table->text('Description');
-
             $table->timestamps();
             $table->foreign('operator_id')->references('id')->on('operators')->onDelete('cascade');
         });

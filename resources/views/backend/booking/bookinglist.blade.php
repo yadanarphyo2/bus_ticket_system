@@ -30,11 +30,11 @@
 									@foreach($bookings as $booking)
 									<tr>
 									<td>{{$i++}}</td>
-									<td>{{ $booking->bus->operator->operator_name}}</td>
+									<td>{{ $booking->schedule_id}}</td>
 									<td>{{ $booking->customer->customer_name}}</td>
-									<td>{{ $booking->seat_amount}}</td>
+									<td>{{ $booking->seat_amout}}</td>
 									<td>{{ $booking->seat_no}}</td>
-									<td>{{ $busschedule->depature_date}}</td>
+									<td>{{ $booking->dapature_date}}</td>
 									
 									</tr>
 									@endforeach

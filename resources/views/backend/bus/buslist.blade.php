@@ -27,7 +27,6 @@
 									<th>No</th>
 									<th>Operator id</th>
 									<th>Total Seats</th>
-									<th>Type of bus</th>
 									<th>Actions</th>
 								</thead>
 								<tbody>

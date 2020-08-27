@@ -31,9 +31,10 @@ Route::Resource('/schedules','ScheduleController');
 
 Route::get('/', 'FrontendController@frontend')->name('frontend');
 Route::post('/index', 'FrontendController@index')->name('index');
+Route::get('/contact', 'FrontendController@contact')->name('contact');
+
 Route::post('/selectseat/{id}', 'FrontendController@selectseat')->name('selectseat');
 Route::post('/customer/{id}', 'FrontendController@customer')->name('customer');
-// Route::Resource('/customers','CustomerController');
 Route::Resource('/bookings','BookingController');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

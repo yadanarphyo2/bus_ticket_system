@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Busschedule extends Model
 {
-    protected $fillable = ['bus_id', 'operator_id','region_id','subregion_id','start_time','arrive_time','price'];
+    protected $fillable = ['bus_id', 'operator_id','region_id','subregion_id','start_time','arrive_time','price','description'];
 
     public function bus($value='')
     {

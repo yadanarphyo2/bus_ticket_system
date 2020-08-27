@@ -22,6 +22,7 @@ class CreateBusschedulesTable extends Migration
             $table->time('start_time');
             $table->time('arrive_time');
             $table->integer('price');
+            $table->string('description');
             $table->timestamps();
             $table->foreign('bus_id')->references('id')->on('buses')->onDelete('cascade');
             $table->foreign('operator_id')->references('id')->on('operators')->onDelete('cascade');

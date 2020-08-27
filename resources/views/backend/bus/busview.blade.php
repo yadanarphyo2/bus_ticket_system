@@ -30,9 +30,7 @@
             <div class="form-group">
               <input type="text" name="total_seats" rows="2" cols="20" class="form-control" value="{{$bus->total_seats}}" placeholder="Total Seats">
             </div>
-            <div class="form-group">
-              <input type="text" name="description" rows="2" cols="20" class="form-control" value="{{$bus->description}}" placeholder="Type of bus">
-            </div>
+            
               <button type="submit" class="btn btn-primary">Update Bus</button>
               <a href="{{route('buses.index')}}" class="btn btn-primary  mx-2">Go Back</a>
               

@@ -33,6 +33,7 @@
 									<th>Start time</th>
 									<th>Arrival time</th>
 									<th>Price</th>
+									<th>Type of bus</th>
 									<th>Actions</th>
 								</thead>
 								<tbody>
@@ -47,6 +48,8 @@
 									<td>{{ $busschedule->start_time}}</td>
 									<td>{{ $busschedule->arrive_time}}</td>
 									<td>{{ $busschedule->price}}</td>
+									<td>{{$busschedule->description}}
+									</td>
 									<td>
 									<a href="{{route('schedules.edit',$busschedule->id)}}" class="btn btn-warning">edit</a>	
 									<form method="post" action="{{route('schedules.destroy',$busschedule->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block">

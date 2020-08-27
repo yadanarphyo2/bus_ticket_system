@@ -56,6 +56,9 @@
             <div class="form-group">
               <input type="text" name="price" rows="2" cols="20" class="form-control" placeholder="Price">
             </div>
+            <div class="form-group">
+              <input type="text" name="description" rows="2" cols="20" class="form-control" placeholder="Type of car">
+            </div>
               <button type="submit" class="btn btn-primary">Register Schedule</button>
               <a href="{{route('schedules.index')}}" class="btn btn-primary  mx-2">Go Back</a>
               

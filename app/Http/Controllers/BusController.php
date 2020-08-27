@@ -43,7 +43,6 @@ class BusController extends Controller
        $request->validate([
         'operator_id'=>'required',
         'total_seats'=>'required',
-        'description'=>'required',
 
         
        ]);
@@ -54,7 +53,6 @@ class BusController extends Controller
        $bus=new Bus;
        $bus->operator_id=$request->operator_id;
        $bus->total_seats=$request->total_seats;
-       $bus->description=$request->description;
 
    
        $bus->save();
@@ -101,7 +99,6 @@ class BusController extends Controller
         'operator_id'=>'required',
         
         'total_seats'=>'required',
-        'description'=>'required',
 
        
        ]);
@@ -114,7 +111,6 @@ class BusController extends Controller
        $bus=Bus::find($id);
        $bus->operator_id=$request->operator_id;
        $bus->total_seats=$request->total_seats;
-       $bus->description=$request->description;
        
        $bus->save();
         //redirect

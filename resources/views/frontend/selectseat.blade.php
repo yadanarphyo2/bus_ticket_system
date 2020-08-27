@@ -57,23 +57,91 @@
                 <div class="card card1 ">
                   <div class="card-body">
                     <div class="row">
-                      
-                      <div class="col-md-6">
-                        @php
-                        $seatamount=$busschedule->bus->total_seats;
-                        
-                        @endphp
-                        
-                        @for ($i =1; $i <= 20; $i++)
-                        <button id="b11" class="clickMe btn-lg mt-1" value="{{$i}}" >{{$i}}</button>
-                        @endfor
-                      </div>
+                      @if($books==null)
+                          <div class="col-md-6">
+                              @php
+                              $seatamount=$busschedule->bus->total_seats;
+                            
+                              @endphp
+                              
+                              @for ($i =1; $i <= 21; $i++)
+                              <button id="b11" class="clickMe btn-lg mt-1" value="{{$i}}"> {{$i}}</button>
+                              @endfor
+                        </div>
 
-                      <div class="col-md-6 text-right">
-                        @for ($i =21; $i <= $seatamount; $i++)
-                        <button id="b11" class="clickMe btn-lg mt-1" value="{{$i}}" >{{$i}}</button>
-                        @endfor
-                      </div>
+                        <div class="col-md-6 text-right">
+                          @for ($i =21; $i <= $seatamount; $i++)
+                          <button id="b11" class="clickMe btn-lg mt-1" value="{{$i}}">{{$i}}</button>
+                          @endfor
+                        </div>
+
+                      @elseif($books!=null)
+                      @php 
+                      $str='';
+
+                      @endphp
+                        @foreach($books as $book)
+                        
+                       @php
+                       $str.=$book->seat_no.",";
+                        @endphp
+                        {{-- $combine=[].$concat($arr); --}}
+                        {{-- String kept = str.substring( 0, str.indexOf(",")); --}}
+                        @endforeach
+
+                        @php
+                       // echo $str;
+
+                        $arr=explode(",", $str);
+
+                        // var_dump($arr);die();
+                        // $a[]=array_merge($arr);
+
+                         // var_dump($arr);die();
+                         $disable=count($arr);
+                        // print_r($disable);die();
+                        @endphp
+
+
+                        <div class="col-md-6">
+                              @php
+                              $seatamount=$busschedule->bus->total_seats;
+                            // @for($k=0;$k<)
+                              
+                              @endphp
+                              {{-- {{$disable}} --}}
+                              @for ($i =1; $i <= 21; $i++)
+                              <button id="b11" class="clickMe btn-lg mt-1" value="{{$i}}"
+
+                              @for($j=0;$j<$disable;$j++)
+
+                              @if($i==$arr[$j])
+                              {
+                                disabled
+                              }
+                              @endif
+                              {{$j}}
+                              @endfor > {{$i}}</button>
+                              @endfor
+                        </div>
+
+                        <div class="col-md-6 text-right">
+                          @for ($i =21; $i <= $seatamount; $i++)
+                          <button id="b11" class="clickMe btn-lg mt-1" value="{{$i}}"
+                          @for($j=0;$j<$disable;$j++)
+                          @if($i==$arr[$j])
+                          {
+                            disabled
+                          }
+                          @endif
+                          {{$j}}
+                          @endfor>{{$i}}</button>
+                          @endfor
+                        </div>
+                      @endif
+
+
+                        
                       
                     </div>
                   </div>
@@ -104,6 +172,7 @@
       <div class="col-md-4">
         <div class="card">
           <div class="card-header">
+            Travel info
           </div>
           <div class="card-body">
             <div class="row">
@@ -233,18 +302,18 @@
       $('.clickMe').click(function(){
         $(this).toggleClass('pressed');
         var x= $(this).val();
-        animals.push(x);
-        for(var i=0; i<=animals.length;i++)
+        for(var i=0; i<=animals.length; i++)
         {
-          console.log(animals[i]);
-        if (animals[i]==null) {
+          if (animals==null || animals[i]!=x)
+          {
           animals.push(x);
-        }else{
-          animals.push(x);
+          }
+          else
+          {
+          var found = animals.find(element => element = x);
+          animals.slice(found);
+          }
         }
-
-      }
-        
         // var str=JSON.stringify(animals);
         $('#seat').text(animals);
         $('#seatt').val(animals);

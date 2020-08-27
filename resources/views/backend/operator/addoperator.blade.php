@@ -26,6 +26,7 @@
               <input type="text" name="operator_address" rows="2" cols="20" class="form-control" placeholder="Enter Operator Address">
             </div>
             
+            
             <div class="row">
               <div class="col-md-6">
                 <label class="control-label">Image</label><br>
