@@ -12,11 +12,12 @@ nav.busticketnav .navbar-nav .nav-item .nav-link{
 	font-size: 1.3rem;
 	padding: 0 1.1rem;
 	text-transform: uppercase;
-	color: white;
+	color: #27476e;
+
 }
 
-nav.busindex .navbar-nav .nav-item .nav-link #nav{
-	font-size: 1.3rem;
+nav.busindex .navbar-nav .nav-item .nav-link{
+	font-size: 1.2rem;
 	padding: 0 1.1rem;
 	text-transform: uppercase;
 	color: #27476e;
@@ -120,19 +121,20 @@ hr.divider{
 div.contact-bolck{
 			background-image: url(../img/banner11.jpg);
 			position: relative;
-			height: 700px;
+			height: 550px;
 			background-repeat: no-repeat;
 			background-size: cover;
 			z-index: 1;
 		}
 		div.contact-bolck::before{
+			background-color: white;
 			content: "";
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
 			position: absolute;
-			opacity: 0.7;
+			opacity: 0.3;
 			z-index: -1;
 
 		}

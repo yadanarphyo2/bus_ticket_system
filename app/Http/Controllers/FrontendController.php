@@ -19,6 +19,10 @@ class FrontendController extends Controller
    		$operators= Operator::all();
    	 	return view('frontendtemplate',compact('operators','regions','subregions'));
    }
+   public function nav($value='')
+   {
+      return view('nav');
+   }
 
    public function contact()
    {

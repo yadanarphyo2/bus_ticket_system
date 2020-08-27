@@ -36,15 +36,15 @@
    <!-- navbar -->
   <nav class="navbar navbar-expand-md busticketnav">
     <div class="container">
-      <a href="index.html" class="navbar-brand"><img src="{{asset('frontend/img/logo.png')}}" width="100px;" class="d-block ml-4"><h4 style="color: #27476e;">Golden Bus Ticket</h4></a>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#busticket">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a href="{{route('frontend')}}" class="navbar-brand"><img src="{{asset('frontend/img/logo.png')}}" width="80px;" height="40px;" class="d-block ml-3"><h5 style="color: #27476e; font-family: offline;" >GoldenBusTicket</h5></a>
+      <span class="navbar-toggler" data-toggle="collapse" data-target="#busticket">
+        <i class="fas fa-bars"></i>
+      </span>
       <div class="collapse navbar-collapse" id="busticket">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="" class="nav-link">HOME</a></li>
-          <li class="nav-item"><a href="" class="nav-link">Ticket</a></li>
-          <li class="nav-item"><a href="" class="nav-link">CONTACT</a></li>
+          <li class="nav-item"><a href="{{route('frontend')}}" class="nav-link">HOME</a></li>
+          
+          <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">CONTACT</a></li>
         </ul>
       </div>
     </div>
@@ -258,10 +258,10 @@
   <div class="container">
     <h3 class="text-center mt-5" style="font-family: offline2;">BUS OPERATOR</h3>
     <hr class="divider pb-5">
-    <div class="row">
+    <div class="row mb-5" >
       @foreach($operators as $operator)
-      <div class="col-md-2">
-        <img src="{{asset($operator->operator_logo)}}" width="150px;">
+      <div class="col-lg-2 col-md-2 col-sm-3 py-1">
+        <img src="{{asset($operator->operator_logo)}}" width="130px;">
       </div>
      @endforeach
     </div>
@@ -320,13 +320,12 @@
     </div>
     <footer class="bg-light py-4">
       <div class="container">
-        <div class="text-center text-muted">Powered by <a href="www.yadanarphyo.me" class="text-decoration-none text-secondary"> Yadanar Phyo
+        <div class="text-center text-muted">Powered by <a href="www.yadanarphyo.me" class="text-decoration-none text-secondary"> Intelgroup
         </a> 
-        Copyright © 2020 VALENTINO.All Rights Reserved-VAT 05412951005
-
+        Copyright © 2020 GOLDENBusTicket.All Rights Reserved-VAT 05412951005
       </div>
     </div>
-  </footer>
+    </footer>
 
 
   

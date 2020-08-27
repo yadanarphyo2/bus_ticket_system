@@ -202,8 +202,7 @@ class ScheduleController extends Controller
         }
         else
         {
-            $busschedule1=Busschedule::where('
-              ', $schoperator1)->where('region_id','=', $schregion1)->where('subregion_id','=', $schsubregion1)->get();
+            $busschedule1=Busschedule::where('operator_id',"=", $schoperator1)->where('region_id','=', $schregion1)->where('subregion_id','=', $schsubregion1)->get();
 
             // dd($busschedule1);
                 foreach ($busschedule1 as $data1) 
