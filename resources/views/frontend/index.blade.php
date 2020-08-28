@@ -90,9 +90,10 @@
                 <a href="#" class="filter list-group-item text-decoration-none" data-id="{{$operator->id}}"><b class="text-dark">{{$operator->operator_name}}</b></a>
             @endforeach
           </div>
-          <div class="col-md-9 pb-5" id="myroute">
+          <div class="col-md-9 ">
+          <div class="row">
             @foreach($busschedule as $bussche)
-
+            <div class="col-md-12 " id="myroute">
             <div class="card mb-3">
               <div class="card-body">
                 <div class="row">
@@ -126,6 +127,8 @@
             </div>
           </div>
           @endforeach
+          </div>
+          </div>
           </div>
         </div>
       </div>

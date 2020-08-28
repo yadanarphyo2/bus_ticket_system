@@ -22,12 +22,12 @@ Route::middleware('role:admin')->group(function(){
 Route::get('/dashboard', 'BackendController@dashboard')->name('dashboard');
 
 });
+
 Route::Resource('/operators','OperatorController');
 Route::Resource('/buses','BusController');
 Route::Resource('/regions','RegionController');
 Route::Resource('/subregions','SubregionController');
 Route::Resource('/schedules','ScheduleController');
-
 
 Route::get('/', 'FrontendController@frontend')->name('frontend');
 Route::post('/index', 'FrontendController@index')->name('index');
